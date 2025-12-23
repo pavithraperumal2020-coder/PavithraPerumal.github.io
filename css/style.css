@@ -1,0 +1,512 @@
+/* 
+  Project: Static Portfolio Website
+  Theme: Blue + Gray
+  Author: Antigravity
+*/
+
+/* =========================================
+   1. CSS Variables & Reset
+   ========================================= */
+:root {
+  /* Colors */
+  --primary-color: #007bff;       /* Blue */
+  --primary-dark: #0056b3;        /* Darker Blue */
+  --secondary-color: #6c757d;     /* Gray */
+  --bg-light: #f8f9fa;            /* Light Gray Background */
+  --bg-white: #ffffff;            /* White Background */
+  --text-dark: #333333;           /* Dark Text */
+  --text-light: #666666;          /* Light Text */
+  --text-white: #ffffff;          /* White Text */
+  --border-color: #e9ecef;        /* Border Gray */
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --container-width: 1100px;
+
+  /* Transitions */
+  --transition: all 0.3s ease;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--bg-light);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================
+   2. Typography
+   ========================================= */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-dark);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* =========================================
+   3. Utility Classes (Layout)
+   ========================================= */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.flex {
+  display: flex;
+}
+
+.grid {
+  display: grid;
+}
+
+.justify-between { justify-content: space-between; }
+.align-center { align-items: center; }
+.text-center { text-align: center; }
+
+.section {
+  padding: var(--spacing-lg) 0;
+}
+
+.bg-white { background-color: var(--bg-white); }
+.bg-light { background-color: var(--bg-light); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  transition: var(--transition);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--text-white);
+}
+
+.btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   4. Header & Navigation
+   ========================================= */
+.header {
+  background-color: var(--bg-white);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-link {
+  font-weight: 500;
+  color: var(--secondary-color);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-color);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+}
+
+/* Mobile Menu Toggle (Checkbox Hack) */
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--primary-color);
+}
+
+#nav-check {
+  display: none;
+}
+
+/* =========================================
+   5. Page Specific Styles
+   ========================================= */
+
+/* Hero Section (Home) */
+.hero {
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(135deg, var(--bg-light) 0%, #eef2f5 100%);
+  padding: 0 var(--spacing-md);
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-content .highlight {
+  color: var(--primary-color);
+}
+
+.hero-tagline {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  margin-bottom: var(--spacing-md);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+}
+
+/* About Page */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+}
+
+.about-img img {
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  background-color: #ddd; /* Placeholder */
+}
+
+.timeline-item {
+  border-left: 3px solid var(--primary-color);
+  padding-left: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  position: relative;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -9px;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.2rem;
+}
+
+/* Skills Page */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.skill-category h3 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+}
+
+.skill-bar {
+  margin-bottom: var(--spacing-sm);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.progress-bg {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: 5px;
+}
+
+/* Projects Page */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.project-card {
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.project-img {
+  height: 200px;
+  background-color: #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--secondary-color);
+}
+
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: var(--spacing-sm);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--spacing-sm);
+}
+
+.tag {
+  background-color: #eef2f5;
+  color: var(--primary-color);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* Contact Page */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  font-size: 1.1rem;
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #eef2f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: var(--spacing-sm);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: var(--spacing-md) 0;
+  text-align: center;
+  margin-top: var(--spacing-lg);
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.social-link {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: var(--transition);
+  opacity: 0.8;
+}
+
+.social-link:hover {
+  opacity: 1;
+  color: var(--primary-color);
+}
+
+/* =========================================
+   6. Media Queries (Responsiveness)
+   ========================================= */
+@media (max-width: 768px) {
+  :root {
+    --spacing-lg: 3rem;
+  }
+
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  
+  .hero-content h1 { font-size: 2.5rem; }
+
+  /* Mobile Navigation */
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-white);
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+    gap: var(--spacing-sm);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-150%);
+    transition: var(--transition);
+    z-index: 999;
+  }
+
+  #nav-check:checked ~ .nav-links {
+    transform: translateY(0);
+  }
+
+  /* Grid Adjustments */
+  .skills-container,
+  .contact-container,
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+}
